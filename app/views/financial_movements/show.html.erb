@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @financial_movement.amount %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @financial_movement.description %>
+</p>
+
+<%= link_to 'Edit', edit_financial_movement_path(@financial_movement) %> |
+<%= link_to 'Back', financial_movements_path %>

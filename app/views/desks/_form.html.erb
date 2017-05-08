@@ -1,0 +1,32 @@
+<%= form_for(desk) do |f| %>
+  <% if desk.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(desk.errors.count, "error") %> prohibited this desk from being saved:</h2>
+
+      <ul>
+      <% desk.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :started_at %>
+    <%= f.datetime_select :started_at %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ended_at %>
+    <%= f.datetime_select :ended_at %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current %>
+    <%= f.check_box :current %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

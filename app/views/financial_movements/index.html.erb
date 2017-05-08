@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Financial Movements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @financial_movements.each do |financial_movement| %>
+      <tr>
+        <td><%= financial_movement.amount %></td>
+        <td><%= financial_movement.description %></td>
+        <td><%= link_to 'Show', financial_movement %></td>
+        <td><%= link_to 'Edit', edit_financial_movement_path(financial_movement) %></td>
+        <td><%= link_to 'Destroy', financial_movement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Financial Movement', new_financial_movement_path %>

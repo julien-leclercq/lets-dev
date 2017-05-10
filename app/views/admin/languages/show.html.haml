@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @language.name
+%p
+  %strong Description:
+  = @language.description
+%p
+  %strong Documentation url:
+  = @language.documentation_url
+= link_to 'Edit', edit_admin_language_path(@language)
+|
+= link_to 'Back', admin_languages_path

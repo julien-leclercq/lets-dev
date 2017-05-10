@@ -1,0 +1,18 @@
+%p#notice= notice
+%h1 Desk User Memberships
+%table
+  %thead
+    %tr
+      %th Desk
+      %th User
+      %th{:colspan => "3"}
+  %tbody
+    - @desk_user_memberships.each do |desk_user_membership|
+      %tr
+        %td= desk_user_membership.desk_id
+        %td= desk_user_membership.user_id
+        %td= link_to 'Show', desk_user_membership
+        %td= link_to 'Edit', edit_admin_desk_user_membership_path(desk_user_membership)
+        %td= link_to 'Destroy', desk_user_membership, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Desk User Membership', new_admin_desk_user_membership_path

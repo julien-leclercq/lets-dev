@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Desk:
+  = @desk_user_membership.desk_id
+%p
+  %strong User:
+  = @desk_user_membership.user_id
+= link_to 'Edit', edit_admin_desk_user_membership_path(@desk_user_membership)
+|
+= link_to 'Back', admin_desk_user_memberships_path

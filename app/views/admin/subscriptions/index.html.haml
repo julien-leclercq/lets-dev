@@ -1,0 +1,18 @@
+%p#notice= notice
+%h1 Subscriptions
+%table
+  %thead
+    %tr
+      %th Financial movement
+      %th User
+      %th{:colspan => "3"}
+  %tbody
+    - @subscriptions.each do |subscription|
+      %tr
+        %td= subscription.financial_movement_id
+        %td= subscription.user_id
+        %td= link_to 'Show', subscription
+        %td= link_to 'Edit', edit_admin_subscription_path(subscription)
+        %td= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Subscription', new_admin_subscription_path

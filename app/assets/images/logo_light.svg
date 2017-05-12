@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="310px" height="75px" viewBox="0 0 310 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Logo Light</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="0%" x2="0%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FF8008" offset="0%"></stop>
+            <stop stop-color="#FFC837" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="0%" x2="1.80564413%" y2="95.0406517%" id="linearGradient-2">
+            <stop stop-color="#FF8008" offset="0%"></stop>
+            <stop stop-color="#FFC837" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-3" x="166" y="0" width="147" height="75"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="147" height="75" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing" transform="translate(-561.000000, -247.000000)">
+            <g id="Logo-Light" transform="translate(558.000000, 247.000000)">
+                <text id="LET’S" font-family="Audiowide-Regular, Audiowide" font-size="48" font-style="expanded" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="0.1328125" y="55">LET’S</tspan>
+                </text>
+                <text id="DEV" fill="url(#linearGradient-1)" font-family="Audiowide-Regular, Audiowide" font-size="48" font-style="expanded" font-weight="normal">
+                    <tspan x="183.01555" y="55">DEV</tspan>
+                </text>
+                <use id="Rectangle" stroke="url(#linearGradient-2)" mask="url(#mask-4)" stroke-width="10" xlink:href="#path-3"></use>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,150 @@
+@import 'bourbon';
+
+.typed-cursor {
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@mixin border-gradient($from, $to, $weight: 0) {
+  $mix-main: mix($from, $to);
+  $mix-sub-from: mix($mix-main, $from);
+  $mix-sub-to: mix($mix-main, $to);
+
+  box-shadow: 0 1px 0 $weight rgba($mix-sub-to, .25),
+  0 -1px 0 $weight rgba($mix-sub-from, .25),
+  1px 0 0 $weight rgba($mix-sub-to, .25),
+  -1px 0 0 $weight  rgba($mix-sub-from, .25),
+  -1px 1px 0 $weight rgba($mix-main, .5),
+  1px -1px 0 $weight rgba($mix-main, .5),
+  1px -1px 0 $weight rgba($to, .75),
+  -1px 1px 0 $weight rgba($from, .75);
+}
+
+html {
+  background-size: cover;
+  background: #000 url(background.png) no-repeat fixed center center;
+}
+
+header {
+  padding: 40px;
+  text-align: right;
+
+  .login-button {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 25px;
+    padding: 0 25px;
+    font-family: Montserrat, sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: #ffffff;
+    text-decoration: none;
+
+    @include border-gradient(#ffc837, #ff8008);
+  }
+}
+
+.main-content {
+  font-family: Montserrat, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h3 {
+    font-size: 48px;
+    font-weight: 200;
+    color: #fff;
+    text-align: center;
+
+    .home-language {
+      font-weight: 600;
+      display: inline;
+      background: -webkit-linear-gradient(45deg, #ffc837, #ff8008);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+
+    .step {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      font-weight: 200;
+      font-size: 28px;
+
+      .mdi {
+        margin: 0 20px;
+        font-size: 36px;
+      }
+    }
+  }
+
+  .engage {
+    a {
+      display: block;
+      font-size: 36px;
+      font-weight: 300;
+      text-align: center;
+      color: #ffffff;
+      height: 80px;
+      line-height: 80px;
+      text-decoration: none;
+      border-radius: 40px;
+      background-image: linear-gradient(81deg, #ffc837, #ff8008);
+      box-shadow: 0 0 20px 0 #cd7725;
+      padding: 0 40px;
+      margin: 40px 0;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 0 30px 0 #cd7725;
+      }
+    }
+  }
+}

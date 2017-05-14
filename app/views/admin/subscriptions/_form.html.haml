@@ -1,0 +1,17 @@
+= form_for([:admin, subscription]) do |f|
+  - if subscription.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(subscription.errors.count, "error")
+        prohibited this subscription from being saved:
+      %ul
+        - subscription.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :financial_movement_id_id
+    = f.text_field :financial_movement_id_id
+  .field
+    = f.label :user_id_id
+    = f.text_field :user_id_id
+  .actions
+    = f.submit

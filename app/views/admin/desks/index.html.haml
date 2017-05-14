@@ -1,0 +1,20 @@
+%p#notice= notice
+%h1 Desks
+%table
+  %thead
+    %tr
+      %th Started at
+      %th Ended at
+      %th Current
+      %th{:colspan => "3"}
+  %tbody
+    - @desks.each do |desk|
+      %tr
+        %td= desk.started_at
+        %td= desk.ended_at
+        %td= desk.current
+        %td= link_to 'Show', desk
+        %td= link_to 'Edit', edit_admin_desk_path(desk)
+        %td= link_to 'Destroy', desk, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Desk', new_admin_desk_path

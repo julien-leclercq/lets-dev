@@ -1,0 +1,20 @@
+%p#notice= notice
+%h1 Languages
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Documentation url
+      %th{:colspan => "3"}
+  %tbody
+    - @languages.each do |language|
+      %tr
+        %td= language.name
+        %td= language.description
+        %td= language.documentation_url
+        %td= link_to 'Show', language
+        %td= link_to 'Edit', edit_admin_language_path(language)
+        %td= link_to 'Destroy', language, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Language', new_admin_language_path

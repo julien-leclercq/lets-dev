@@ -1,0 +1,27 @@
+%header
+  = link_to 'Connexion', new_user_session_path, class: 'login-button'
+
+.main-content
+  = image_tag('logo_light.svg')
+  %h3
+    Apprenez à développer en
+    %br
+    .home-language
+    en 3 étapes
+
+  .steps
+    .step
+      .mdi.mdi-account-multiple-plus
+      Crée ton équipe
+    .step
+      .mdi.mdi-code-braces
+      Participe aux challenges
+    .step
+      .mdi.mdi-trophy-variant
+      Gagne des prix
+
+  .engage
+    = link_to 'Commencer maintenant', new_user_registration_path
+
+= javascript_include_tag 'typed'
+= javascript_include_tag 'home'

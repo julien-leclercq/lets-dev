@@ -1,0 +1,17 @@
+= form_for([:admin, jury_challenge_membership]) do |f|
+  - if jury_challenge_membership.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(jury_challenge_membership.errors.count, "error")
+        prohibited this jury_challenge_membership from being saved:
+      %ul
+        - jury_challenge_membership.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :user_id_id
+    = f.text_field :user_id_id
+  .field
+    = f.label :challenge_id_id
+    = f.text_field :challenge_id_id
+  .actions
+    = f.submit

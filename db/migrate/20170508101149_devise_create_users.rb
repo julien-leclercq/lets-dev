@@ -26,8 +26,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string   :unconfirmed_email
 
       ## Omniauthable
-      t.string :provider
-      t.string :uid
+      t.string :facebook_id
+      t.string :github_id
+      t.string :facebook_id
+      t.string :google_oauth2_id
 
       ## Lockable
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts

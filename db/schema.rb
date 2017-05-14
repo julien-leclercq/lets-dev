@@ -128,8 +128,9 @@ ActiveRecord::Schema.define(version: 20170508104405) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "provider"
-    t.string   "uid"
+    t.string   "facebook_id"
+    t.string   "github_id"
+    t.string   "google_oauth2_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

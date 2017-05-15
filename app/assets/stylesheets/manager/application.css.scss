@@ -1,0 +1,15 @@
+@import 'navbar';
+@import 'sidebar';
+
+html {
+  font-family: Montserrat, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.main-content {
+  margin: 75px 0 0 240px;
+  padding: 30px 40px;
+}

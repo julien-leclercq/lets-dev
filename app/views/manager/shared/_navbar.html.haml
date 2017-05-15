@@ -1,0 +1,6 @@
+#navbar
+  .navigation
+    Dashboard
+  #logged-user
+    = link_to current_user.username, manager_me_index_path
+    = image_tag current_user.image

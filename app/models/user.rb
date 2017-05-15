@@ -49,6 +49,10 @@ class User < ApplicationRecord
     end
   end
 
+  def admin?
+    self.desks.where(current: true).size > 0
+  end
+
   private
   def check_image
     self.image = "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email)}?d=mm&s=100" if self.image.nil?

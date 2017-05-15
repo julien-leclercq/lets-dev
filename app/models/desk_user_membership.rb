@@ -1,4 +1,4 @@
 class DeskUserMembership < ApplicationRecord
-  belongs_to :desk_id
-  belongs_to :user_id
+  belongs_to :desk
+  belongs_to :user
 end

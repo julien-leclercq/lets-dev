@@ -1,1 +1,0 @@
-json.partial! "team_challenge_memberships/team_challenge_membership", team_challenge_membership: @team_challenge_membership

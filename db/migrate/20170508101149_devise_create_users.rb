@@ -2,6 +2,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
   def change
     create_table :users do |t|
       ## Database authenticatable
+      t.string :username
+      t.string :image
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
@@ -38,8 +40,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
 
       ## Google
       t.string :google_oauth2_id
-      t.string :google_name
-      t.string :google_image
+      t.string :google_oauth2_name
+      t.string :google_oauth2_image
 
       ## Lockable
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts

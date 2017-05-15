@@ -21,13 +21,22 @@ Rails.application.routes.draw do
   end
 
   namespace :manager do
+    resources :dashboard, only: [:index]
     resources :language_sets, only: [:index, :show]
     resources :languages, only: [:index, :show]
     resources :challenges, only: [:index, :show]
     resources :teams
     resources :desks, only: [:index, :show]
+    resources :me do
+      get :edit, on: :collection
+      get action: 'show', on: :collection
+      patch action: 'update', on: :collection
+      delete :facebook, on: :collection
+      delete :github, on: :collection
+      delete :google, on: :collection
+    end
 
-    root to: 'challenges#index'
+    root to: 'dashboard#index'
   end
 
   resources :home, only: :index

@@ -114,6 +114,8 @@ ActiveRecord::Schema.define(version: 20170508104405) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "username"
+    t.string   "image"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -136,8 +138,8 @@ ActiveRecord::Schema.define(version: 20170508104405) do
     t.string   "github_username"
     t.string   "github_image"
     t.string   "google_oauth2_id"
-    t.string   "google_name"
-    t.string   "google_image"
+    t.string   "google_oauth2_name"
+    t.string   "google_oauth2_image"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

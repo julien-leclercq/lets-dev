@@ -1,20 +1,68 @@
 header {
   padding: 40px;
   text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  .login-button {
-    display: inline-block;
+  img {
     height: 50px;
-    line-height: 50px;
-    border-radius: 25px;
-    padding: 0 25px;
-    font-family: Montserrat, sans-serif;
-    font-size: 24px;
-    font-weight: 300;
-    color: #ffffff;
-    text-decoration: none;
+  }
 
-    @include border-gradient(#ffc837, #ff8008);
+  .right {
+    margin-left: auto;
+
+    a {
+      color: #fff;
+      font-size: 18px;
+      margin: 0 20px;
+      font-weight: 300;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: -webkit-linear-gradient(45deg, #ffc837, #ff8008);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      &.active {
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          background: -webkit-linear-gradient(5deg, #ffc837, #ff8008);
+          height: 1px;
+          bottom: -10px;
+          left: 0;
+          right: 0;
+
+        }
+      }
+
+      &.login-button {
+        display: inline-block;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 25px;
+        padding: 0 25px;
+        font-family: Montserrat, sans-serif;
+        font-size: 24px;
+        font-weight: 300;
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0;
+
+        @include border-gradient(#ffc837, #ff8008);
+
+        &:hover {
+          background: inherit;
+          background-image: linear-gradient(81deg, #ffc837, #ff8008);
+          -webkit-text-fill-color: #fff;
+          box-shadow: none;
+        }
+      }
+    }
   }
 }
 

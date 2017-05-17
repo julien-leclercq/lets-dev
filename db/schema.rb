@@ -84,6 +84,10 @@ ActiveRecord::Schema.define(version: 20170508104405) do
     t.string   "name"
     t.text     "description",       limit: 65535
     t.string   "documentation_url"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end

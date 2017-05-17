@@ -1,0 +1,26 @@
+- content_for :navigation do
+  Challenges
+- content_for :page_title do
+  Challenges - Let's Dev !
+
+#challenges.columns
+  .column
+    - if @current_challenges.size > 0
+      %h2
+        Challenges en cours
+      - @current_challenges.in_groups_of(2, false).each do |challenges|
+        .columns
+          - challenges.each do |c|
+            .column.is-half
+              = render partial: 'shared/challenge_card', locals: {challenge: c}
+    - if @ended_challenges.size > 0
+      %h2
+        Challenges terminés
+      - @ended_challenges.in_groups_of(2, false).each do |challenges|
+        .columns
+          - challenges.each do |c|
+            .column.is-half
+              = render partial: 'shared/challenge_card', locals: {challenge: c}
+  .column.is-third
+    %h2
+      Classement général

@@ -1,8 +1,16 @@
+@import 'bulma';
+
 html {
   background-size: cover;
   background: #000 url(background.png) no-repeat fixed center center;
 }
 
+body {
+  font-family: Montserrat, sans-serif;
+}
+
 @import 'mixins';
 @import 'home';
 @import 'sessions';
+@import 'challenges';
+@import 'shared/challenge_card';

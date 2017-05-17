@@ -1,0 +1,10 @@
+- content_for :navigation do
+  Challenges
+- content_for :page_title do
+  = "#{@challenge.title} - Let's Dev !"
+
+#challenge
+  %h2
+    = @challenge.title
+  .subject
+    = raw Markdown.new(@challenge.subject).to_html

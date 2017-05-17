@@ -1,5 +1,5 @@
 /* This is a manifest file that'll be compiled into application.js, which will include all the files
-   listed below.
+ listed below.
  *
  * Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
  * or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
@@ -14,3 +14,9 @@
  *= require jquery_ujs
  *= require turbolinks
  */
+window.addEventListener('scroll', function (e) {
+    var s = $(window).scrollTop(),
+        d = $(document).height(),
+        c = $(window).height();
+    $('#navbar').css('box-shadow', '0 0 ' + (s / (d - c)) * 10 + 'px rgba(0, 0, 0, 0.1)');
+});

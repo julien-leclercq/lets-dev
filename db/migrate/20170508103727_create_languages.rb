@@ -5,7 +5,10 @@ class CreateLanguages < ActiveRecord::Migration[5.0]
       t.text :description
       t.string :documentation_url
 
+      t.attachment :logo
+
       t.timestamps
     end
+
   end
 end

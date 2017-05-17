@@ -1,0 +1,7 @@
+= render partial: 'shared/header'
+
+#challenges
+  .columns
+    - @current_challenges.each do |c|
+      .column
+        = render partial: 'shared/challenge_card', locals: {challenge: c}

@@ -1,0 +1,13 @@
+.challenge-card
+  %h3
+    = challenge.title
+  %span
+    = I18n.localize challenge.starts_at.to_date, format: :long, locale: :fr
+    →
+    = I18n.localize challenge.ends_at.to_date, format: :long, locale: :fr
+  .languages
+    - 3.times do
+      - challenge.languages.each do |l|
+        = image_tag l.logo.url(:thumb), alt: l.name, title: l.name
+  = link_to 'Voir le sujet', manager_challenge_path(challenge) if controller_path == 'manager/challenges'
+  = link_to 'Voir le sujet', challenge_path(challenge) if controller_path == 'challenges'

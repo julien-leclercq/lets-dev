@@ -1,0 +1,11 @@
+= render partial: 'shared/header'
+
+#challenges
+  .columns
+    .column.is-quarter
+    .column.is-half
+      .challenge
+        %h1
+          = @challenge.title
+        .subject
+          = raw Markdown.new(@challenge.subject).to_html

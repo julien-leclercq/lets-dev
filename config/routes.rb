@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :home, only: :index
+  resources :challenges, only: [:index, :show]
 
   root to: 'home#index'
 end

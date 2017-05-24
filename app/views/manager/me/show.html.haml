@@ -2,30 +2,54 @@
   Mon profil
 - content_for :page_title do
   Mon profil - Let's Dev !
-
-%h3
-  Basic infos
-%h5 Username
-= @user.username
-%h5 Email
-= @user.email
-
-%h3 Accounts
-%p
-  - if @user.facebook_id.nil?
-    = link_to 'Connect FB', user_facebook_omniauth_authorize_path(provider: :facebook)
-  - else
-    = "Connected as #{@user.facebook_name}"
-    = link_to 'Disconnect', facebook_manager_me_index_path, method: :delete
-%p
-  - if @user.github_id.nil?
-    = link_to 'Connect GH', user_github_omniauth_authorize_path(provider: :github)
-  - else
-    = "Connected as #{@user.github_name}"
-    = link_to 'Disconnect GH', github_manager_me_index_path, method: :delete
-%p
-  - if @user.google_oauth2_id.nil?
-    = link_to 'Connect GO', user_google_oauth2_omniauth_authorize_path(provider: :google_oauth2)
-  - else
-    = "Connected as #{@user.google_oauth2_name}"
-    = link_to 'Disconnect', google_manager_me_index_path, method: :delete
+#me
+  .columns
+    .column.infos
+      %h2
+        Basic infos
+      .columns
+        .column.is-third
+          = image_tag @user.image
+        .column
+          = form_for @user, url: {action: :update} do |f|
+            = f.text_field     :username,               placeholder: 'Username',      autocomplete: :off, value: @user.username
+            = f.password_field :password,               placeholder: 'Password',      autocomplete: :off
+            = f.password_field :password_confirmation,  placeholder: 'Confirmation',  autocomplete: :off
+            .button-container
+              %button.gradient-button{type: :submit}
+                Mettre à jour
+    .column.is-third
+      %h2 Accounts
+      %p
+        - if @user.facebook_id.nil?
+          = link_to user_facebook_omniauth_authorize_path(provider: :facebook), class: 'social-button facebook' do
+            %span.mdi.mdi-facebook
+            %span
+              Connecter
+        - else
+          .social-button.facebook
+            = image_tag @user.facebook_image
+            %span
+              = @user.facebook_name
+      %p
+        - if @user.github_id.nil?
+          = link_to user_github_omniauth_authorize_path(provider: :github), class: 'social-button github' do
+            %span.mdi.mdi-github-circle
+            %span
+              Connecter
+        - else
+          .social-button.github
+            = image_tag @user.github_image
+            %span
+              = @user.github_name
+      %p
+        - if @user.google_oauth2_id.nil?
+          = link_to user_google_oauth2_omniauth_authorize_path(provider: :google_oauth2), class: 'social-button google' do
+            %span.mdi.mdi-google
+            %span
+              Connecter
+        - else
+          .social-button.google
+            = image_tag @user.google_oauth2_image
+            %span
+              = @user.google_oauth2_name

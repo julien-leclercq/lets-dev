@@ -1,6 +1,7 @@
 @import 'bulma';
 @import 'navbar';
 @import 'sidebar';
+@import '../toastr';
 
 html {
   font-family: Montserrat, sans-serif;
@@ -12,9 +13,79 @@ body {
   margin: 0;
 }
 
+h1 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 36px;
+  font-weight: 300;
+}
+
+h2 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 24px;
+  font-weight: 300;
+}
+
+h3 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+h4 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 20px;
+  font-weight: 300;
+}
+
+h5 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+h6 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  font-weight: 300;
+}
+
+
 .main-content {
   margin: 100px 0 0 240px;
   padding: 30px 40px;
 }
 
+form {
+  input {
+    font-family: Montserrat, sans-serif;
+    height: 50px;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 25px;
+    padding: 0 25px;
+    border: 1px solid #cecdcd;
+    font-weight: 300;
+    font-size: 18px;
+    outline: 0;
+  }
+
+  .button-container {
+    text-align: center;
+  }
+
+  .gradient-button {
+    margin-top: 20px;
+    height: 50px;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #FFC837 0%, #FF8008 100%);
+    box-shadow: 0 0 10px 0 rgba(255, 200, 55, 0.75);
+    border: none;
+    padding: 0 25px;
+    font-size: 24px;
+    font-weight: 300;
+    color: #fff;
+  }
+}
+
 @import 'challenges';
+@import 'me';

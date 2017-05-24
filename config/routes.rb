@@ -12,9 +12,8 @@ Rails.application.routes.draw do
     resources :teams
     resources :desks, only: [:index, :show]
     resources :me do
-      get :edit, on: :collection
-      get action: 'show', on: :collection
-      patch action: 'update', on: :collection
+      get action: :show, on: :collection, as: :show
+      patch action: :update, on: :collection, as: :update
       delete :facebook, on: :collection
       delete :github, on: :collection
       delete :google, on: :collection

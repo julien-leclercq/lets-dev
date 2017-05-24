@@ -8,7 +8,8 @@ class Manager::MeController < Manager::BaseController
   end
 
   def update
-    if @user.update(user_params)
+    if @user.update_with_password(user_params)
+      bypass_sign_in(@user)
       redirect_to manager_me_index_path, notice: 'User updated successfully'
     else
       redirect_to manager_me_index_path, alert: @user.errors.full_messages
@@ -36,6 +37,6 @@ class Manager::MeController < Manager::BaseController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :current_password, :password, :password_confirmation)
   end
 end

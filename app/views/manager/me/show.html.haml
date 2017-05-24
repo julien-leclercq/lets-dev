@@ -53,3 +53,7 @@
             = image_tag @user.google_oauth2_image
             %span
               = @user.google_oauth2_name
+      %h2
+        Déconnexion
+      %p
+        = link_to 'Se déconnecter', destroy_user_session_path, method: :delete

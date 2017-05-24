@@ -22,5 +22,9 @@
   .engage
     = link_to 'Commencer maintenant', new_user_registration_path
 
+#languages
+  - @languages.each do |l|
+    %p= l.name
+
 = javascript_include_tag 'typed'
 = javascript_include_tag 'home'

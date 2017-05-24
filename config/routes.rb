@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :manager do
     resources :dashboard, only: [:index]
     resources :language_sets, only: [:index, :show]
-    resources :languages, only: [:index, :show]
+    resources :missing, only: [:index, :show]
     resources :challenges, only: [:index, :show]
     resources :teams
     resources :desks, only: [:index, :show]

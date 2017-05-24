@@ -9,5 +9,7 @@
     - 3.times do
       - challenge.languages.each do |l|
         = image_tag l.logo.url(:thumb), alt: l.name, title: l.name
-  = link_to 'Voir le sujet', manager_challenge_path(challenge) if controller_path == 'manager/challenges'
-  = link_to 'Voir le sujet', challenge_path(challenge) if controller_path == 'challenges'
+  - if controller_path.include? 'manager'
+    = link_to 'Voir le sujet', manager_challenge_path(challenge)
+  - else
+    = link_to 'Voir le sujet', challenge_path(challenge)

@@ -2,3 +2,12 @@
   Dashboard
 - content_for :page_title do
   Dashboard - Let's Dev !
+
+#dashboard
+  %h2
+    Challenges en cours
+  - @challenges.in_groups_of(3, false).each do |challenges|
+    .columns
+      - challenges.each do |c|
+        .column.is-third
+          = render partial: 'shared/challenge_card', locals: {challenge: c}

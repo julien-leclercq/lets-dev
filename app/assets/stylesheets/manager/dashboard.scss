@@ -1,0 +1,11 @@
+#dashboard {
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .columns {
+    padding-right: 40px;
+  }
+
+  @import '../shared/challenge_card';
+}

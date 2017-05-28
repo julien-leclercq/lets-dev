@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20170508104405) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "languages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "missing", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.text     "description",       limit: 65535
     t.string   "documentation_url"
@@ -153,12 +153,6 @@ ActiveRecord::Schema.define(version: 20170508104405) do
 
   add_foreign_key "desk_user_memberships", "desks"
   add_foreign_key "desk_user_memberships", "users"
-  add_foreign_key "jury_challenge_memberships", "challenges"
-  add_foreign_key "jury_challenge_memberships", "users"
-  add_foreign_key "language_set_memberships", "language_sets"
-  add_foreign_key "language_set_memberships", "languages"
   add_foreign_key "subscriptions", "financial_movements"
   add_foreign_key "subscriptions", "users"
-  add_foreign_key "team_challenge_memberships", "challenges"
-  add_foreign_key "team_challenge_memberships", "teams"
 end

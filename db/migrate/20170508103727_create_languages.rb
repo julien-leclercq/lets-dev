@@ -1,6 +1,6 @@
 class CreateLanguages < ActiveRecord::Migration[5.0]
   def change
-    create_table :missing do |t|
+    create_table :language do |t|
       t.string :name
       t.text :description
       t.string :documentation_url

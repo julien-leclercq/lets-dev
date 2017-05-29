@@ -1,8 +1,8 @@
 @import 'bulma';
 
 html {
+  background: #000 asset-url('background.png') no-repeat fixed center center;
   background-size: cover;
-  background: #000 url(background.png) no-repeat fixed center center;
 }
 
 body {

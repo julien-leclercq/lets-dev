@@ -92,3 +92,6 @@ vel.',
       ends_at: Time.now + 1.month
   )
 end
+
+Team.create(name: "Let's Dev Team !")
+TeamUserMembership.create(user: database_users.last, team: Team.first, role: :admin)

@@ -1,0 +1,8 @@
+%h1
+  Bonjour,
+%p
+  Tu as été invité à rejoindre l'équipe
+  %b{style: 'font-weight: 400;'}
+    = @team_invitation.team.name
+  pour participer aux challenges Let's Dev ! Pour la rejoindre, il te suffit de cliquer sur le bouton ci-dessous.
+= render partial: 'shared/mailers/link_button', locals: {link: 'Lien', text: "Rejoindre l'équipe"}

@@ -9,7 +9,7 @@
 - Run `bundle install`
 - Set database:
     - Create user `letsdev` on your PostgreSQL server
-        - On MacOS: `createuser letsdev`
+        - On MacOS: `createuser letsdev -s`
     - Create `development` and `test` databases
         - On MacOS: 
             - `createdb -Oletsdev -Eutf8 letsdev_development`

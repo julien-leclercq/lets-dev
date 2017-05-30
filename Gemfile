@@ -18,7 +18,7 @@ gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bourbon', '~> 4.3', '>= 4.3.4'
-gem 'bulma', '~> 0.1.0'
+gem 'bulma-rails', '~> 0.4.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes

@@ -4,7 +4,7 @@ class CreateTeamUserMembershipInvitations < ActiveRecord::Migration[5.0]
       t.belongs_to :team
       t.string :user_email
       t.string :code
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps
     end

@@ -2,7 +2,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     if user_signed_in?
       current_user.update_omniauth request.env["omniauth.auth"]
-      redirect_to manager_me_index_path
+      redirect_to social_manager_me_index_path
     else
       @user = User.from_omniauth(request.env['omniauth.auth'])
 
@@ -19,7 +19,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def github
     if user_signed_in?
       current_user.update_omniauth request.env["omniauth.auth"]
-      redirect_to manager_me_index_path
+      redirect_to social_manager_me_index_path
     else
       @user = User.from_omniauth(request.env["omniauth.auth"])
       sign_in_and_redirect @user
@@ -29,7 +29,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
     if user_signed_in?
       current_user.update_omniauth request.env["omniauth.auth"]
-      redirect_to manager_me_index_path
+      redirect_to social_manager_me_index_path
     else
       @user = User.from_omniauth(request.env["omniauth.auth"])
 

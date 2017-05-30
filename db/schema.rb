@@ -117,9 +117,9 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.integer  "team_id"
     t.string   "user_email"
     t.string   "code"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["team_id"], name: "index_team_user_membership_invitations_on_team_id", using: :btree
   end
 
@@ -148,7 +148,10 @@ ActiveRecord::Schema.define(version: 20170529121529) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
-    t.string   "image"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

@@ -15,7 +15,20 @@ class User < ApplicationRecord
   validates :github_id, uniqueness: true, allow_blank: true
   validates :google_oauth2_id, uniqueness: true, allow_blank: true
 
-  before_save :check_image
+  Paperclip.interpolates :username do |attachment, style|
+    attachment.instance.username
+  end
+
+  has_attached_file :avatar,
+                    styles: {
+                        original: '500x500#',
+                        medium: '300x300#',
+                        thumb: '100x100#'
+                    },
+                    url: '/uploads/:class/:attachment/:username/:style.:extension',
+                    default_url: '/images/missing/:class.png'
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  before_post_process :rename_file
 
   def update_omniauth(auth)
     self["#{auth.provider}_id"] = auth.uid
@@ -29,7 +42,6 @@ class User < ApplicationRecord
       user.username = auth.info.name
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      user.image = auth.info.image
       user["#{auth.provider}_id"] = auth.uid
       user["#{auth.provider}_name"] = auth.info.name
       user["#{auth.provider}_image"] = auth.info.image
@@ -54,7 +66,7 @@ class User < ApplicationRecord
   end
 
   private
-  def check_image
-    self.image = "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email)}?d=mm&s=100" if self.image.nil?
+  def rename_file
+    self.avatar.instance_write :file_name, "#{username.downcase}#{File.extname(avatar_file_name)}"
   end
 end

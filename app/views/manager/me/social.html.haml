@@ -1,0 +1,44 @@
+- content_for :navigation do
+  Mon profil
+- content_for :page_title do
+  Mon profil - Let's Dev !
+#me
+  .columns
+    = render partial: 'shared/manager/me/side_navigation'
+    .column.container
+      %h2
+        Comptes associés
+      .columns
+        .column
+          - if @user.facebook_id.nil?
+            = link_to user_facebook_omniauth_authorize_path(provider: :facebook), class: 'social-button facebook' do
+              %span.mdi.mdi-facebook
+              %span
+                Connecter
+          - else
+            .social-button.facebook
+              = image_tag @user.facebook_image
+              %span
+                = @user.facebook_name
+        .column
+          - if @user.github_id.nil?
+            = link_to user_github_omniauth_authorize_path(provider: :github), class: 'social-button github' do
+              %span.mdi.mdi-github-circle
+              %span
+                Connecter
+          - else
+            .social-button.github
+              = image_tag @user.github_image
+              %span
+                = @user.github_name
+        .column
+          - if @user.google_oauth2_id.nil?
+            = link_to user_google_oauth2_omniauth_authorize_path(provider: :google_oauth2), class: 'social-button google' do
+              %span.mdi.mdi-google
+              %span
+                Connecter
+          - else
+            .social-button.google
+              = image_tag @user.google_oauth2_image
+              %span
+                = @user.google_oauth2_name

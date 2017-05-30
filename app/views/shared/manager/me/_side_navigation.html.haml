@@ -1,0 +1,13 @@
+.column.is-2.side-navigation
+  = link_to overview_manager_me_index_path, class: action_name == 'overview' ? 'active' : nil do
+    %i.mdi.mdi-account
+    Aperçu
+  = link_to edit_manager_me_index_path, class: action_name == 'edit' ? 'active' : nil do
+    %i.mdi.mdi-account-edit
+    Modifier
+  = link_to password_manager_me_index_path, class: action_name == 'password' ? 'active' : nil do
+    %i.mdi.mdi-shield-half-full
+    Securité
+  = link_to social_manager_me_index_path, class: action_name == 'social' ? 'active' : nil do
+    %i.mdi.mdi-account-card-details
+    Comptes associés

@@ -1,12 +1,13 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
     %title
       = yield :page_title
     = csrf_meta_tags
-    = stylesheet_link_tag    'manager/application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'manager/application', 'data-turbolinks-track': 'reload'
+    %link{rel: 'stylesheet', href: '//cdn.materialdesignicons.com/1.9.32/css/materialdesignicons.min.css'}
+    = stylesheet_link_tag    'manager/application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = javascript_include_tag 'manager/application', 'data-turbolinks-track' => 'reload'
   %body
     = custom_bootstrap_flash
     = render partial: 'manager/shared/navbar'

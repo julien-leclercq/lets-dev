@@ -80,6 +80,10 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  <<: *default
+  database: letsdev_staging
+
 production:
   <<: *default
   database: letsdev_production

@@ -4,7 +4,7 @@ class CreateFinancialMovements < ActiveRecord::Migration[5.0]
       t.float :amount
       t.text :description
 
-      t.belongs_to :user
+      t.belongs_to :user, type: :uuid
 
       t.timestamps
     end

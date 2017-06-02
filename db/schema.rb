@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20170529121529) do
   end
 
   create_table "desk_user_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "desk_id"
-    t.integer  "user_id"
+    t.uuid     "desk_id"
+    t.uuid     "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["desk_id"], name: "index_desk_user_memberships_on_desk_id", using: :btree
@@ -54,15 +54,15 @@ ActiveRecord::Schema.define(version: 20170529121529) do
   create_table "financial_movements", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.float    "amount"
     t.text     "description"
-    t.integer  "user_id"
+    t.uuid     "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_financial_movements_on_user_id", using: :btree
   end
 
   create_table "jury_challenge_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "challenge_id"
+    t.uuid     "user_id"
+    t.uuid     "challenge_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["challenge_id"], name: "index_jury_challenge_memberships_on_challenge_id", using: :btree
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 20170529121529) do
   end
 
   create_table "language_set_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "language_id"
-    t.integer  "language_set_id"
+    t.uuid     "language_id"
+    t.uuid     "language_set_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["language_id"], name: "index_language_set_memberships_on_language_id", using: :btree
@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(version: 20170529121529) do
   end
 
   create_table "subscriptions", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "financial_movement_id"
-    t.integer  "user_id"
+    t.uuid     "financial_movement_id"
+    t.uuid     "user_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["financial_movement_id"], name: "index_subscriptions_on_financial_movement_id", using: :btree
@@ -106,8 +106,8 @@ ActiveRecord::Schema.define(version: 20170529121529) do
   end
 
   create_table "team_challenge_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "team_id"
-    t.integer  "challenge_id"
+    t.uuid     "team_id"
+    t.uuid     "challenge_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["challenge_id"], name: "index_team_challenge_memberships_on_challenge_id", using: :btree
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20170529121529) do
   end
 
   create_table "team_user_membership_invitations", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "team_id"
+    t.uuid     "team_id"
     t.string   "user_email"
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
@@ -124,8 +124,8 @@ ActiveRecord::Schema.define(version: 20170529121529) do
   end
 
   create_table "team_user_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.integer  "team_id"
-    t.integer  "user_id"
+    t.uuid     "team_id"
+    t.uuid     "user_id"
     t.integer  "role"
     t.datetime "started_at"
     t.datetime "ended_at"

@@ -40,7 +40,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'paperclip', '~> 5.0.0'
 
 gem 'devise', '~> 4.2', '>= 4.2.1'
-gem 'devise-async'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
@@ -49,7 +48,7 @@ gem 'activeadmin', '~> 1.0'
 
 gem 'faker'
 
-group :development, :test, :staging do
+group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'dotenv-rails'

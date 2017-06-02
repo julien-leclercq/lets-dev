@@ -5,4 +5,4 @@
   %b{style: 'font-weight: 400;'}
     = @team_invitation.team.name
   pour participer aux challenges Let's Dev ! Pour la rejoindre, il te suffit de cliquer sur le bouton ci-dessous.
-= render partial: 'shared/mailers/link_button', locals: {link: accept_team_user_membership_invitation_url(@team_invitation.code), text: "Rejoindre l'équipe"}
+= render partial: 'shared/mailers/link_button', locals: {link: accept_team_user_membership_invitation_url(@team_invitation), text: "Rejoindre l'équipe"}

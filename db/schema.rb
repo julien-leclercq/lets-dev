@@ -14,8 +14,9 @@ ActiveRecord::Schema.define(version: 20170529121529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "challenges", force: :cascade do |t|
+  create_table "challenges", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "title"
     t.text     "subject"
     t.datetime "starts_at"
@@ -26,14 +27,14 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.index ["language_set_id"], name: "index_challenges_on_language_set_id", using: :btree
   end
 
-  create_table "contacts", force: :cascade do |t|
+  create_table "contacts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "desk_user_memberships", force: :cascade do |t|
+  create_table "desk_user_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "desk_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -42,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.index ["user_id"], name: "index_desk_user_memberships_on_user_id", using: :btree
   end
 
-  create_table "desks", force: :cascade do |t|
+  create_table "desks", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.datetime "started_at"
     t.datetime "ended_at"
     t.boolean  "current"
@@ -50,7 +51,7 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "financial_movements", force: :cascade do |t|
+  create_table "financial_movements", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.float    "amount"
     t.text     "description"
     t.integer  "user_id"
@@ -59,7 +60,7 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.index ["user_id"], name: "index_financial_movements_on_user_id", using: :btree
   end
 
-  create_table "jury_challenge_memberships", force: :cascade do |t|
+  create_table "jury_challenge_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "challenge_id"
     t.datetime "created_at",   null: false
@@ -68,7 +69,7 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.index ["user_id"], name: "index_jury_challenge_memberships_on_user_id", using: :btree
   end
 
-  create_table "language_set_memberships", force: :cascade do |t|
+  create_table "language_set_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "language_id"
     t.integer  "language_set_id"
     t.datetime "created_at",      null: false
@@ -77,13 +78,13 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.index ["language_set_id"], name: "index_language_set_memberships_on_language_set_id", using: :btree
   end
 
-  create_table "language_sets", force: :cascade do |t|
+  create_table "language_sets", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "languages", force: :cascade do |t|
+  create_table "languages", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.string   "documentation_url"
@@ -95,7 +96,7 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.datetime "updated_at",        null: false
   end
 
-  create_table "subscriptions", force: :cascade do |t|
+  create_table "subscriptions", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "financial_movement_id"
     t.integer  "user_id"
     t.datetime "created_at",            null: false
@@ -104,7 +105,7 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.index ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
   end
 
-  create_table "team_challenge_memberships", force: :cascade do |t|
+  create_table "team_challenge_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "team_id"
     t.integer  "challenge_id"
     t.datetime "created_at",   null: false
@@ -113,17 +114,16 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.index ["team_id"], name: "index_team_challenge_memberships_on_team_id", using: :btree
   end
 
-  create_table "team_user_membership_invitations", force: :cascade do |t|
+  create_table "team_user_membership_invitations", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "team_id"
     t.string   "user_email"
-    t.string   "code"
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["team_id"], name: "index_team_user_membership_invitations_on_team_id", using: :btree
   end
 
-  create_table "team_user_memberships", force: :cascade do |t|
+  create_table "team_user_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.integer  "team_id"
     t.integer  "user_id"
     t.integer  "role"
@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.index ["user_id"], name: "index_team_user_memberships_on_user_id", using: :btree
   end
 
-  create_table "teams", force: :cascade do |t|
+  create_table "teams", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.string   "logo_file_name"
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.datetime "updated_at",        null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "username"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"

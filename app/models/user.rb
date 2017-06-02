@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook, :github, :google_oauth2]
+         :async, :omniauthable, :omniauth_providers => [:facebook, :github, :google_oauth2]
 
   has_many :subscriptions
   has_many :team_user_memberships

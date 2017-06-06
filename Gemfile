@@ -39,10 +39,14 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'paperclip', '~> 5.0.0'
 
+# Authentication
 gem 'devise', '~> 4.2', '>= 4.2.1'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
+
+# External APIs
+gem 'github_api'
 
 gem 'activeadmin', '~> 1.0'
 

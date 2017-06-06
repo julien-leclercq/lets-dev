@@ -34,6 +34,7 @@ class User < ApplicationRecord
     self["#{auth.provider}_id"] = auth.uid
     self["#{auth.provider}_name"] = auth.info.name
     self["#{auth.provider}_image"] = auth.info.image
+    self.github_username = auth.info.nickname if auth.provider == 'github'
     self.save
   end
 
@@ -63,6 +64,10 @@ class User < ApplicationRecord
 
   def admin?
     self.desks.where(current: true).size > 0
+  end
+
+  def github_repos
+    Github.repos.list user: self.github_username
   end
 
   private

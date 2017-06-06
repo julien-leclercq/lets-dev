@@ -1,3 +1,9 @@
+- content_for :meta_og do
+  %meta{property: 'og:title', content: "Challenges - Let's Dev !"}
+  %meta{property: 'og:description', content: 'Crée ton équipe dès maintenant et apprends à développer !'}
+  %meta{property: 'og:type', content: 'website'}
+  %meta{property: 'og:url', content: challenges_url}
+
 = render partial: 'shared/header'
 
 #challenges

@@ -6,9 +6,8 @@
     →
     = I18n.localize challenge.ends_at.to_date, format: :long, locale: :fr
   .languages
-    - 3.times do
-      - challenge.languages.each do |l|
-        = image_tag l.logo.url(:thumb), alt: l.name, title: l.name
+    - challenge.languages.each do |l|
+      = image_tag l.logo.url(:thumb), alt: l.name, title: l.name
   - if controller_path.include? 'manager'
     = link_to 'Voir le sujet', manager_challenge_path(challenge)
   - else

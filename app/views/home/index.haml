@@ -20,7 +20,7 @@
       Gagne des prix
 
   .engage
-    = link_to 'Commencer maintenant', new_user_registration_path
+    = link_to 'Commencer maintenant', user_signed_in? ? manager_dashboard_index_path : new_user_registration_path
 
 #languages
   - @languages.each do |l|

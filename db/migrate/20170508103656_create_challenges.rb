@@ -6,7 +6,7 @@ class CreateChallenges < ActiveRecord::Migration[5.0]
       t.datetime :starts_at
       t.datetime :ends_at
 
-      t.belongs_to :language_set
+      t.belongs_to :language_set, type: :uuid
 
       t.timestamps
     end

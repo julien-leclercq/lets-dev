@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.text     "subject"
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.integer  "language_set_id"
+    t.uuid     "language_set_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["language_set_id"], name: "index_challenges_on_language_set_id", using: :btree

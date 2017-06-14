@@ -2,13 +2,13 @@
   %h3
     = challenge.title
   %span
-    = I18n.localize challenge.starts_at.to_date, format: :long, locale: :fr
+    = I18n.localize challenge.starts_at.to_date, format: :long
     →
-    = I18n.localize challenge.ends_at.to_date, format: :long, locale: :fr
+    = I18n.localize challenge.ends_at.to_date, format: :long
   .languages
     - challenge.languages.each do |l|
       = image_tag l.logo.url(:thumb), alt: l.name, title: l.name
   - if controller_path.include? 'manager'
-    = link_to 'Voir le sujet', manager_challenge_path(challenge)
+    = link_to t('partials.challenge_card.view_subject'), manager_challenge_path(challenge)
   - else
-    = link_to 'Voir le sujet', challenge_path(challenge)
+    = link_to t('partials.challenge_card.view_subject'), challenge_path(challenge)

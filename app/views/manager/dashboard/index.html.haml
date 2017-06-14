@@ -1,11 +1,11 @@
 - content_for :navigation do
-  Dashboard
+  = t('views.manager.dashboard')
 - content_for :page_title do
-  Dashboard - Let's Dev !
+  = "#{t('views.manager.dashboard')} - Let's Dev !"
 
 #dashboard
   %h2
-    Challenges en cours
+    = t('views.manager.challenges.current')
   - @challenges.in_groups_of(3, false).each do |challenges|
     .columns
       - challenges.each do |c|

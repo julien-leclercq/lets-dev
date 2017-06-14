@@ -1,13 +1,13 @@
 .column.is-2.side-navigation
   = link_to overview_manager_me_index_path, class: action_name == 'overview' ? 'active' : nil do
     %i.mdi.mdi-account
-    Aperçu
+    = t('views.manager.me.side_navigation.overview')
   = link_to edit_manager_me_index_path, class: action_name == 'edit' ? 'active' : nil do
     %i.mdi.mdi-account-edit
-    Modifier
-  = link_to password_manager_me_index_path, class: action_name == 'password' ? 'active' : nil do
+    = t('views.manager.me.side_navigation.edit')
+  = link_to security_manager_me_index_path, class: action_name == 'security' ? 'active' : nil do
     %i.mdi.mdi-shield-half-full
-    Securité
+    = t('views.manager.me.side_navigation.security')
   = link_to social_manager_me_index_path, class: action_name == 'social' ? 'active' : nil do
     %i.mdi.mdi-account-card-details
-    Comptes associés
+    = t('views.manager.me.side_navigation.social')

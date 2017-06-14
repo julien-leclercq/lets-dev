@@ -5,25 +5,25 @@ class TeamUserMembershipInvitationsController < ApplicationController
 
     # If doesn't exist
     if @invitation.nil?
-      redirect_to redirect_path, alert: "Cette invitation n'existe pas"
+      redirect_to redirect_path, alert: t('controllers.team_user_membership_invitations.doesnt_exist')
 
     # If not pending
     elsif !@invitation.pending?
-      redirect_to redirect_path, alert: 'Cette invitation a expiré'
+      redirect_to redirect_path, alert: t('controllers.team_user_membership_invitations.expired')
 
     # If user signed in and his email is the invitation's one
     elsif user_signed_in? && current_user.email == @invitation.user_email
       @membership = TeamUserMembership.new(team: @invitation.team, user: current_user)
       if @membership.save
         @invitation.update(status: :accepted)
-        redirect_to manager_root_path, notice: "Vous avez rejoint l'équipe #{@invitation.team.name}"
+        redirect_to manager_root_path, notice: t('controllers.team_user_membership_invitations.accepted', team_name: @invitation.team.name)
       else
         redirect_to manager_root_path, alert: @membership.errors.full_messages
       end
 
     # If user signed in but his email doesn't match
     elsif user_signed_in? && current_user.email != @invitation.user_email
-      redirect_to manager_root_path, alert: "Cette invitation n'est pas destinée à l'utilisateur connecté"
+      redirect_to manager_root_path, alert: t('controllers.team_user_membership_invitations.wrong_user')
 
     # If user not signed in
     elsif !user_signed_in?
@@ -35,23 +35,23 @@ class TeamUserMembershipInvitationsController < ApplicationController
 
     # If doesn't exist
     if @invitation.nil?
-      redirect_to redirect_path, alert: "Cette invitation n'existe pas"
+      redirect_to redirect_path, alert: t('controllers.team_user_membership_invitations.doesnt_exist')
 
       # If not pending
     elsif !@invitation.pending?
-      redirect_to redirect_path, alert: 'Cette invitation a expiré'
+      redirect_to redirect_path, alert: t('controllers.team_user_membership_invitations.expired')
 
       # If user signed in and his email is the invitation's one
     elsif user_signed_in? && current_user.email == @invitation.user_email
       if @invitation.update(status: :declined)
-        redirect_to manager_root_path, notice: "Vous avez décliné l'invitation de l'équipe #{@invitation.team.name}"
+        redirect_to manager_root_path, notice: t('controllers.team_user_membership_invitations.declined', team_name: @invitation.team.name)
       else
         redirect_to manager_root_path, alert: @invitation.errors.full_messages
       end
 
       # If user signed in but his email doesn't match
     elsif user_signed_in? && current_user.email != @invitation.user_email
-      redirect_to manager_root_path, alert: "Cette invitation n'est pas destinée à l'utilisateur connecté"
+      redirect_to manager_root_path, alert: t('controllers.team_user_membership_invitations.wrong_user')
 
       # If user not signed in
     elsif !user_signed_in?

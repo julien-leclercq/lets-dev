@@ -12,13 +12,14 @@ Rails.application.routes.draw do
     resources :teams
     resources :desks, only: [:index, :show]
     resources :me do
-      get :password, on: :collection
+      get :security, on: :collection
       get :overview, on: :collection
       get :edit, on: :collection
       get :social, on: :collection
       patch :update, on: :collection
       patch :update_password, on: :collection
       patch :update_avatar, on: :collection
+      patch :update_locale, on: :collection
       delete :facebook, on: :collection
       delete :github, on: :collection
       delete :google, on: :collection

@@ -1,7 +1,7 @@
 - content_for :navigation do
-  Mon profil
+  #{t('views.manager.me.title')}
 - content_for :page_title do
-  Mon profil - Let's Dev !
+  #{t('views.manager.me.title')} - Let's Dev !
 #me
   .columns
     = render partial: 'shared/manager/me/side_navigation'
@@ -9,7 +9,7 @@
       .columns
         .column.is-one-third
           %h2
-            Mon compte
+            = t('views.manager.me.overview.my_account')
           .columns
             .column.is-one-quarter
               = image_tag @current_user.avatar, class: 'profile-picture'
@@ -21,7 +21,7 @@
                 = @current_user.email
         .column
           %h2
-            Mes invitations
+            = t('views.manager.me.overview.my_invitations')
           - if @pending_invitations.size > 0
             .invitations
               - @pending_invitations.each do |i|
@@ -37,4 +37,4 @@
           - else
             %p
               %small
-                Vous n'avez aucune invitation pour le moment.
+                = t('views.manager.me.overview.no_invitations')

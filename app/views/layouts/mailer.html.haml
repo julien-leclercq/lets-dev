@@ -8,7 +8,7 @@
     %footer{style: 'margin: 50px; color: #fff; opacity: 0.3;'}
       = image_tag "#{root_url}images/emails/icon.png", style: 'height: 40px'
       %p
-        Retrouvez-nous sur:
+        = t('mailers.application.find_us')
       %div{style: 'display: flex; flex-direction: row; align-items: center; justify-content: center;'}
         = link_to 'https://www.facebook.com/letsdevatig2i/' do
           = image_tag "#{root_url}images/emails/facebook.png", style: 'height: 30px; margin: 0 10px;'

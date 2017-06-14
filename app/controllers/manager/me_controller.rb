@@ -4,7 +4,7 @@ class Manager::MeController < Manager::BaseController
   def overview
   end
 
-  def password
+  def security
   end
 
   def edit
@@ -16,7 +16,7 @@ class Manager::MeController < Manager::BaseController
   def update
     if @user.update(user_params)
       bypass_sign_in(@user)
-      redirect_to edit_manager_me_index_path, notice: 'Informations mises à jour'
+      redirect_to edit_manager_me_index_path, notice: t('controllers.manager.me.user_updated')
     else
       redirect_to edit_manager_me_index_path, alert: @user.errors.full_messages
     end
@@ -25,7 +25,17 @@ class Manager::MeController < Manager::BaseController
   def update_avatar
     if @user.update(user_avatar_params)
       bypass_sign_in(@user)
-      redirect_to edit_manager_me_index_path, notice: 'Avatar mis à jour'
+      redirect_to edit_manager_me_index_path, notice: t('controllers.manager.me.avatar_updated')
+    else
+      redirect_to edit_manager_me_index_path, alert: @user.errors.full_messages
+    end
+  end
+
+  def update_locale
+    if @user.update(user_locale_params)
+      bypass_sign_in(@user)
+      I18n.locale = user_locale_params[:locale]
+      redirect_to edit_manager_me_index_path, notice: t('controllers.manager.me.locale_updated')
     else
       redirect_to edit_manager_me_index_path, alert: @user.errors.full_messages
     end
@@ -33,25 +43,25 @@ class Manager::MeController < Manager::BaseController
 
   def update_password
     if @user.update_with_password(user_password_params)
-      redirect_to password_manager_me_index_path, notice: 'Mot de passe mis à jour'
+      redirect_to security_manager_me_index_path, notice: t('controllers.manager.me.password_updated')
     else
-      redirect_to password_manager_me_index_path, alert: @user.errors.full_messages
+      redirect_to security_manager_me_index_path, alert: @user.errors.full_messages
     end
   end
 
   def facebook
     @user.update(facebook_id: nil, facebook_image: nil, facebook_name: nil)
-    redirect_to social_manager_me_index_path, notice: 'Facebook has been linked to your account'
+    redirect_to social_manager_me_index_path, notice: t('controllers.manager.me.provider_removed', provider: 'Facebook')
   end
 
   def github
     @user.update(github_id: nil, github_image: nil, github_name: nil, github_username: nil)
-    redirect_to social_manager_me_index_path, notice: 'Github has been linked to your account'
+    redirect_to social_manager_me_index_path, notice: t('controllers.manager.me.provider_removed', provider: 'Github')
   end
 
   def google
     @user.update(google_oauth2_id: nil, google_oauth2_image: nil, google_oauth2_name: nil)
-    redirect_to social_manager_me_index_path, notice: 'Google has been linked to your account'
+    redirect_to social_manager_me_index_path, notice: t('controllers.manager.me.provider_removed', provider: 'Google')
   end
 
   private
@@ -65,6 +75,10 @@ class Manager::MeController < Manager::BaseController
 
   def user_avatar_params
     params.require(:user).permit(:avatar)
+  end
+
+  def user_locale_params
+    params.require(:user).permit(:locale)
   end
 
   def user_password_params

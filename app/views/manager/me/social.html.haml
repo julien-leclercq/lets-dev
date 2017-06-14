@@ -1,20 +1,20 @@
 - content_for :navigation do
-  Mon profil
+  #{t('views.manager.me.title')}
 - content_for :page_title do
-  Mon profil - Let's Dev !
+  #{t('views.manager.me.title')} - Let's Dev !
 #me
   .columns
     = render partial: 'shared/manager/me/side_navigation'
     .column.container
       %h2
-        Comptes associés
+        = t('views.manager.me.social.associated_accounts')
       .columns
         .column
           - if @user.facebook_id.nil?
             = link_to user_facebook_omniauth_authorize_path(provider: :facebook), class: 'social-button facebook' do
               %span.mdi.mdi-facebook
               %span
-                Connecter
+                = t('views.manager.me.social.connect')
           - else
             .social-button.facebook
               = image_tag @user.facebook_image
@@ -25,7 +25,7 @@
             = link_to user_github_omniauth_authorize_path(provider: :github), class: 'social-button github' do
               %span.mdi.mdi-github-circle
               %span
-                Connecter
+                = t('views.manager.me.social.connect')
           - else
             .social-button.github
               = image_tag @user.github_image
@@ -36,7 +36,7 @@
             = link_to user_google_oauth2_omniauth_authorize_path(provider: :google_oauth2), class: 'social-button google' do
               %span.mdi.mdi-google
               %span
-                Connecter
+                = t('views.manager.me.social.connect')
           - else
             .social-button.google
               = image_tag @user.google_oauth2_image

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :language_sets, only: [:index, :show]
     resources :missing, only: [:index, :show]
     resources :challenges, only: [:index, :show]
-    resources :teams
+    resources :teams, only: [:index, :show, :new, :create]
     resources :desks, only: [:index, :show]
     resources :me do
       get :password, on: :collection

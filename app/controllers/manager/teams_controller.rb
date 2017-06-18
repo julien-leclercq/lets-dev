@@ -1,10 +1,10 @@
 class Manager::TeamsController < Manager::BaseController
-  before_action :set_manager_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   # GET /manager/teams
   # GET /manager/teams.json
   def index
-    @manager_teams = Team.all
+    @teams = Team.all
   end
 
   # GET /manager/teams/1
@@ -25,12 +25,13 @@ class Manager::TeamsController < Manager::BaseController
   # POST /manager/teams.json
   def create
 
-    @manager_team = Team.create(manager_team_params)
+    @team = Team.create(team_params)
 
     respond_to do |format|
-      if @manager_team.save
+      if @team.save
+        TeamUserMembership.create(team: @team, user: current_user, role: :admin)
         format.html {redirect_to manager_teams_path, notice: 'Team was successfully created.'}
-        format.json {render :show, status: :created, location: @manager_team}
+        format.json {render :show, status: :created, location: @team}
       else
         format.html {render :new}
         format.json {render json: manager_teams_path.errors, status: :unprocessable_entity}
@@ -42,12 +43,12 @@ class Manager::TeamsController < Manager::BaseController
   # PATCH/PUT /manager/teams/1.json
   def update
     respond_to do |format|
-      if @manager_team.update(manager_team_params)
-        format.html {redirect_to manager_teams_path, notice: 'Team was successfully updated.'}
-        format.json {render :show, status: :ok, location: @manager_team}
+      if @team.update(team_params)
+        format.html {redirect_to teams_path, notice: 'Team was successfully updated.'}
+        format.json {render :show, status: :ok, location: @team}
       else
         format.html {render :edit}
-        format.json {render json: @manager_team.errors, status: :unprocessable_entity}
+        format.json {render json: @team.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -55,21 +56,21 @@ class Manager::TeamsController < Manager::BaseController
   # DELETE /manager/teams/1
   # DELETE /manager/teams/1.json
   def destroy
-    @manager_team.destroy
+    @team.destroy
     respond_to do |format|
-      format.html {redirect_to manager_teams_url, notice: 'Team was successfully destroyed.'}
+      format.html {redirect_to teams_url, notice: 'Team was successfully destroyed.'}
       format.json {head :no_content}
     end
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_manager_team
-    @manager_team = Team.find(params[:id])
+  def set_team
+    @team = Team.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def manager_team_params
-    params.require(:team).permit(:name).permit(:description)
+  def team_params
+    params.require(:team).permit(:name, :description)
   end
 end

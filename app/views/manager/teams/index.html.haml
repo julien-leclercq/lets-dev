@@ -5,7 +5,10 @@
 
 
 %h1 Listing manager_teams
-
+%ul
+  - @teams.each do |t|
+    %li
+      = t.name
 
 %br
 

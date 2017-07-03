@@ -17,10 +17,21 @@ en:
     signin:
       title: "Sign in"
       button: "Sign in"
+      signup: "Not registered yet ?"
+      forgot_password: "Forgot your password ?"
 
     signup:
       title: "Sign up"
       button: "Sign up"
+      signin: "Already registered ?"
+
+    passwords:
+      new:
+        title: "Forgot your password ?"
+        button: "Send instructions"
+      edit:
+        title: "Forgot your password"
+        button: "Change my password"
 
     manager:
       dashboard: "Dashboard"
@@ -36,6 +47,9 @@ en:
           edit: "Edit"
           security: "Security"
           social: "Associated accounts"
+          logout:
+            label: "Logout"
+            alert: "Are you sure you want to logout ?"
 
         edit:
           update_informations: "Update my informations"

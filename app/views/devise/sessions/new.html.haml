@@ -11,9 +11,8 @@
         .field
           = f.password_field :password, autocomplete: 'off', placeholder: t('activerecord.attributes.user.password')
         - if devise_mapping.rememberable?
-          .field
-            = f.check_box :remember_me
-            = f.label :remember_me
+          = f.hidden_field :remember_me, value: 1
         .actions
           = f.submit t('views.signin.button')
+        = link_to t('views.signin.forgot_password'), new_password_path(resource_name)
     = render 'devise/shared/links'

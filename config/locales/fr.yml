@@ -17,10 +17,21 @@ fr:
     signin:
       title: "Connexion"
       button: "Se connecter"
+      signup: "Pas encore inscrit ?"
+      forgot_password: "Mot de passe oublié ?"
 
     signup:
       title: "Inscription"
       button: "S'inscrire"
+      signin: "Déjà inscrit ?"
+
+    passwords:
+      new:
+        title: "Mot de passe oublié ?"
+        button: "Envoyer les instructions"
+      edit:
+        title: "Mot de passe oublié ?"
+        button: "Changer de mot de passe"
 
     manager:
       dashboard: "Tableau de bord"
@@ -36,6 +47,9 @@ fr:
           edit: "Modifier"
           security: "Sécurité"
           social: "Comptes associés"
+          logout:
+            label: "Se déconnecter"
+            alert: "Êtes-vous sûr de vouloir vous déconnecter ?"
 
         edit:
           update_informations: "Mettre à jour mes informations"

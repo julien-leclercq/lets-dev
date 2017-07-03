@@ -23,7 +23,11 @@
 
       &.active {
         color: $orange;
-        background: rgba(0,0,0,0.025);
+        background: rgba(0, 0, 0, 0.025);
+      }
+
+      &.logout {
+        color: rgba(255, 0, 0, 0.3);
       }
     }
   }

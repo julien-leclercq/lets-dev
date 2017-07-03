@@ -11,3 +11,6 @@
   = link_to social_manager_me_index_path, class: action_name == 'social' ? 'active' : nil do
     %i.mdi.mdi-account-card-details
     = t('views.manager.me.side_navigation.social')
+  = link_to destroy_user_session_path, method: :delete, class: 'logout', 'data-confirm' => t('views.manager.me.side_navigation.logout.alert') do
+    %i.mdi.mdi-power
+    = t('views.manager.me.side_navigation.logout.label')

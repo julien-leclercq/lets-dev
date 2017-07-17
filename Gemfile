@@ -50,13 +50,14 @@ gem 'github_api'
 
 gem 'activeadmin', '~> 1.0'
 
-gem 'faker'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails', '~> 4.8'
+  gem 'faker', '~> 1.8', '>= 1.8.4'
+  gem 'simplecov'
 end
 
 group :development do

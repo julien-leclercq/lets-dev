@@ -4,6 +4,8 @@ class Team < ApplicationRecord
   has_many :team_challenge_memberships, dependent: :destroy
   has_many :challenges, through: :team_challenge_memberships
 
+  validates :name, uniqueness: true, presence: true
+
   Paperclip.interpolates :name do |attachment, style|
     attachment.instance.name
   end

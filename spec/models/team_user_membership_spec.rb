@@ -16,11 +16,11 @@ describe TeamUserMembership do
       end
     end
 
-    describe :uniqueness_of do
-      it :active_membership_by_user do
-        t = FactoryGirl.create(:team_user_membership)
-        expect(FactoryGirl.build(:team_user_membership, user: t.user)).not_to be_valid
-      end
-    end
+    #describe :uniqueness_of do
+    #  it :active_membership_by_user do
+    #    t = FactoryGirl.create(:team_user_membership)
+    #    expect(FactoryGirl.build(:team_user_membership, user: t.user)).not_to be_valid
+    #  end
+    #end
   end
 end

@@ -12,83 +12,79 @@
 
 ActiveRecord::Schema.define(version: 20170529121529) do
 
-  create_table "challenges", id: nil, force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
+  create_table "challenges", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "title"
     t.text     "subject"
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.         "language_set_id"
+    t.uuid     "language_set_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["id"], name: "sqlite_autoindex_challenges_1", unique: true
-    t.index ["language_set_id"], name: "index_challenges_on_language_set_id"
+    t.index ["language_set_id"], name: "index_challenges_on_language_set_id", using: :btree
   end
 
-  create_table "contacts", id: nil, force: :cascade do |t|
+  create_table "contacts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["id"], name: "sqlite_autoindex_contacts_1", unique: true
   end
 
-  create_table "desk_user_memberships", id: nil, force: :cascade do |t|
-    t.         "desk_id"
-    t.         "user_id"
+  create_table "desk_user_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "desk_id"
+    t.uuid     "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["desk_id"], name: "index_desk_user_memberships_on_desk_id"
-    t.index ["id"], name: "sqlite_autoindex_desk_user_memberships_1", unique: true
-    t.index ["user_id"], name: "index_desk_user_memberships_on_user_id"
+    t.index ["desk_id"], name: "index_desk_user_memberships_on_desk_id", using: :btree
+    t.index ["user_id"], name: "index_desk_user_memberships_on_user_id", using: :btree
   end
 
-  create_table "desks", id: nil, force: :cascade do |t|
+  create_table "desks", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.datetime "started_at"
     t.datetime "ended_at"
     t.boolean  "current"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "sqlite_autoindex_desks_1", unique: true
   end
 
-  create_table "financial_movements", id: nil, force: :cascade do |t|
+  create_table "financial_movements", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.float    "amount"
     t.text     "description"
-    t.         "user_id"
+    t.uuid     "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["id"], name: "sqlite_autoindex_financial_movements_1", unique: true
-    t.index ["user_id"], name: "index_financial_movements_on_user_id"
+    t.index ["user_id"], name: "index_financial_movements_on_user_id", using: :btree
   end
 
-  create_table "jury_challenge_memberships", id: nil, force: :cascade do |t|
-    t.         "user_id"
-    t.         "challenge_id"
+  create_table "jury_challenge_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "user_id"
+    t.uuid     "challenge_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["challenge_id"], name: "index_jury_challenge_memberships_on_challenge_id"
-    t.index ["id"], name: "sqlite_autoindex_jury_challenge_memberships_1", unique: true
-    t.index ["user_id"], name: "index_jury_challenge_memberships_on_user_id"
+    t.index ["challenge_id"], name: "index_jury_challenge_memberships_on_challenge_id", using: :btree
+    t.index ["user_id"], name: "index_jury_challenge_memberships_on_user_id", using: :btree
   end
 
-  create_table "language_set_memberships", id: nil, force: :cascade do |t|
-    t.         "language_id"
-    t.         "language_set_id"
+  create_table "language_set_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "language_id"
+    t.uuid     "language_set_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["id"], name: "sqlite_autoindex_language_set_memberships_1", unique: true
-    t.index ["language_id"], name: "index_language_set_memberships_on_language_id"
-    t.index ["language_set_id"], name: "index_language_set_memberships_on_language_set_id"
+    t.index ["language_id"], name: "index_language_set_memberships_on_language_id", using: :btree
+    t.index ["language_set_id"], name: "index_language_set_memberships_on_language_set_id", using: :btree
   end
 
-  create_table "language_sets", id: nil, force: :cascade do |t|
+  create_table "language_sets", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "sqlite_autoindex_language_sets_1", unique: true
   end
 
-  create_table "languages", id: nil, force: :cascade do |t|
+  create_table "languages", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.string   "documentation_url"
@@ -98,53 +94,48 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.datetime "logo_updated_at"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["id"], name: "sqlite_autoindex_languages_1", unique: true
   end
 
-  create_table "subscriptions", id: nil, force: :cascade do |t|
-    t.         "financial_movement_id"
-    t.         "user_id"
+  create_table "subscriptions", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "financial_movement_id"
+    t.uuid     "user_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.index ["financial_movement_id"], name: "index_subscriptions_on_financial_movement_id"
-    t.index ["id"], name: "sqlite_autoindex_subscriptions_1", unique: true
-    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+    t.index ["financial_movement_id"], name: "index_subscriptions_on_financial_movement_id", using: :btree
+    t.index ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
   end
 
-  create_table "team_challenge_memberships", id: nil, force: :cascade do |t|
-    t.         "team_id"
-    t.         "challenge_id"
+  create_table "team_challenge_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "team_id"
+    t.uuid     "challenge_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["challenge_id"], name: "index_team_challenge_memberships_on_challenge_id"
-    t.index ["id"], name: "sqlite_autoindex_team_challenge_memberships_1", unique: true
-    t.index ["team_id"], name: "index_team_challenge_memberships_on_team_id"
+    t.index ["challenge_id"], name: "index_team_challenge_memberships_on_challenge_id", using: :btree
+    t.index ["team_id"], name: "index_team_challenge_memberships_on_team_id", using: :btree
   end
 
-  create_table "team_user_membership_invitations", id: nil, force: :cascade do |t|
-    t.         "team_id"
+  create_table "team_user_membership_invitations", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "team_id"
     t.string   "user_email"
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.index ["id"], name: "sqlite_autoindex_team_user_membership_invitations_1", unique: true
-    t.index ["team_id"], name: "index_team_user_membership_invitations_on_team_id"
+    t.index ["team_id"], name: "index_team_user_membership_invitations_on_team_id", using: :btree
   end
 
-  create_table "team_user_memberships", id: nil, force: :cascade do |t|
-    t.         "team_id"
-    t.         "user_id"
+  create_table "team_user_memberships", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.uuid     "team_id"
+    t.uuid     "user_id"
     t.integer  "role"
     t.datetime "started_at"
     t.datetime "ended_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "sqlite_autoindex_team_user_memberships_1", unique: true
-    t.index ["team_id"], name: "index_team_user_memberships_on_team_id"
-    t.index ["user_id"], name: "index_team_user_memberships_on_user_id"
+    t.index ["team_id"], name: "index_team_user_memberships_on_team_id", using: :btree
+    t.index ["user_id"], name: "index_team_user_memberships_on_user_id", using: :btree
   end
 
-  create_table "teams", id: nil, force: :cascade do |t|
+  create_table "teams", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.string   "logo_file_name"
@@ -153,10 +144,9 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.datetime "logo_updated_at"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["id"], name: "sqlite_autoindex_teams_1", unique: true
   end
 
-  create_table "users", id: nil, force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "username"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
@@ -189,10 +179,9 @@ ActiveRecord::Schema.define(version: 20170529121529) do
     t.string   "google_oauth2_image"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["id"], name: "sqlite_autoindex_users_1", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end

@@ -3,10 +3,14 @@ rvm:
 - 2.3.0
 - 2.2.4
 bundler_args: --jobs=2
-script:
-  - bundle exec rake spec
 cache: bundler
 services:
   - postgresql
 before_script:
   - cp config/database.travis.yml config/database.yml
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - psql -c 'create database letsdev_test' -U postgres
+script:
+  - bundle exec rake spec
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
